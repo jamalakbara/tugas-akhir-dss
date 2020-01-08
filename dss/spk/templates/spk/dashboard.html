@@ -1,0 +1,260 @@
+{% extends 'spk/base.html' %}
+{% block content %}
+<div class="content">
+  <div class="container-fluid">
+    {% if inggris %}
+    <div class="card">
+      <div class="card-header card-header-success">
+        <h3 class="card-title">Grafik Nilai Siswa</h3>
+        <!-- <p class="card-category">Handcrafted by our friend
+          <a target="_blank" href="https://github.com/mouse0270">Robert McIntosh</a>. Please checkout the
+          <a href="http://bootstrap-notify.remabledesigns.com/" target="_blank">full documentation.</a>
+        </p> -->
+      </div>
+      <div class="card-body">
+        <div class="row">
+          <div class="col-md-12">
+            <div id="chartContainer" style="height: 300px; width: 100%;"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endblock content %}
+{% block js %}
+<script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+
+{% if matematika %}
+<script>
+  window.onload = function () {
+
+    var chart = new CanvasJS.Chart("chartContainer", {
+      animationEnabled: true,
+      theme: "light2",
+      axisX: {
+        crosshair: {
+          enabled: true,
+          snapToDataPoint: true
+        }
+      },
+      axisY: {
+        title: "Nilai",
+        crosshair: {
+          enabled: true
+        }
+      },
+      toolTip: {
+        shared: true
+      },
+      legend: {
+        cursor: "pointer",
+        verticalAlign: "bottom",
+        horizontalAlign: "left",
+        dockInsidePlotArea: true,
+        itemclick: toogleDataSeries
+      },
+      data: [{
+        type: "line",
+        showInLegend: true,
+        name: "Bahasa Inggris",
+        markerType: "square",
+        dataPoints: [
+          { label: "Semester 1", y: Number("{{ inggris.0 }}") },
+          { label: "Semester 2", y: Number("{{ inggris.1 }}") },
+          { label: "Semester 3", y: Number("{{ inggris.2 }}") },
+          { label: "Semester 4", y: Number("{{ inggris.3 }}") },
+          { label: "Semester 5", y: Number("{{ inggris.4 }}") }
+        ]
+      },
+      {
+        type: "line",
+        showInLegend: true,
+        name: "Bahasa Indonesia",
+        markerType: "circle",
+        dataPoints: [
+          { label: "Semester 1", y: Number("{{ indonesia.0 }}") },
+          { label: "Semester 2", y: Number("{{ indonesia.1 }}") },
+          { label: "Semester 3", y: Number("{{ indonesia.2 }}") },
+          { label: "Semester 4", y: Number("{{ indonesia.3 }}") },
+          { label: "Semester 5", y: Number("{{ indonesia.4 }}") }
+        ]
+      },
+      {
+        type: "line",
+        showInLegend: true,
+        name: "Matematika",
+        markerType: "triangle",
+        dataPoints: [
+          { label: "Semester 1", y: Number("{{ matematika.0 }}") },
+          { label: "Semester 2", y: Number("{{ matematika.1 }}") },
+          { label: "Semester 3", y: Number("{{ matematika.2 }}") },
+          { label: "Semester 4", y: Number("{{ matematika.3 }}") },
+          { label: "Semester 5", y: Number("{{ matematika.4 }}") }
+        ]
+      },
+      {
+        type: "line",
+        showInLegend: true,
+        name: "Fisika",
+        markerType: "cross",
+        dataPoints: [
+          { label: "Semester 1", y: Number("{{ fisika.0 }}") },
+          { label: "Semester 2", y: Number("{{ fisika.1 }}") },
+          { label: "Semester 3", y: Number("{{ fisika.2 }}") },
+          { label: "Semester 4", y: Number("{{ fisika.3 }}") },
+          { label: "Semester 5", y: Number("{{ fisika.4 }}") }
+        ]
+      },
+      {
+        type: "line",
+        showInLegend: true,
+        name: "Kimia",
+        markerType: "no marker",
+        dataPoints: [
+          { label: "Semester 1", y: Number("{{ kimia.0 }}") },
+          { label: "Semester 2", y: Number("{{ kimia.1 }}") },
+          { label: "Semester 3", y: Number("{{ kimia.2 }}") },
+          { label: "Semester 4", y: Number("{{ kimia.3 }}") },
+          { label: "Semester 5", y: Number("{{ kimia.4 }}") }
+        ]
+      },{
+        type: "line",
+        showInLegend: true,
+        name: "Biologi",
+        markerType: "circle",
+        dataPoints: [
+          { label: "Semester 1", y: Number("{{ biologi.0 }}") },
+          { label: "Semester 2", y: Number("{{ biologi.1 }}") },
+          { label: "Semester 3", y: Number("{{ biologi.2 }}") },
+          { label: "Semester 4", y: Number("{{ biologi.3 }}") },
+          { label: "Semester 5", y: Number("{{ biologi.4 }}") }
+        ]
+      }]
+    });
+    chart.render();
+
+    function toogleDataSeries(e) {
+      if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+        e.dataSeries.visible = false;
+      } else {
+        e.dataSeries.visible = true;
+      }
+      chart.render();
+    }
+
+  }
+</script>
+{% endif %}
+
+{% if ekonomi %}
+<script>
+  window.onload = function () {
+
+    var chart = new CanvasJS.Chart("chartContainer", {
+      animationEnabled: true,
+      theme: "light2",
+      axisX: {
+        crosshair: {
+          enabled: true,
+          snapToDataPoint: true
+        }
+      },
+      axisY: {
+        title: "Nilai",
+        crosshair: {
+          enabled: true
+        }
+      },
+      toolTip: {
+        shared: true
+      },
+      legend: {
+        cursor: "pointer",
+        verticalAlign: "bottom",
+        horizontalAlign: "left",
+        dockInsidePlotArea: true,
+        itemclick: toogleDataSeries
+      },
+      data: [{
+        type: "line",
+        showInLegend: true,
+        name: "Bahasa Inggris",
+        markerType: "square",
+        dataPoints: [
+          { label: "Semester 1", y: Number("{{ inggris.0 }}") },
+          { label: "Semester 2", y: Number("{{ inggris.1 }}") },
+          { label: "Semester 3", y: Number("{{ inggris.2 }}") },
+          { label: "Semester 4", y: Number("{{ inggris.3 }}") },
+          { label: "Semester 5", y: Number("{{ inggris.4 }}") }
+        ]
+      },
+      {
+        type: "line",
+        showInLegend: true,
+        name: "Bahasa Indonesia",
+        markerType: "circle",
+        dataPoints: [
+          { label: "Semester 1", y: Number("{{ indonesia.0 }}") },
+          { label: "Semester 2", y: Number("{{ indonesia.1 }}") },
+          { label: "Semester 3", y: Number("{{ indonesia.2 }}") },
+          { label: "Semester 4", y: Number("{{ indonesia.3 }}") },
+          { label: "Semester 5", y: Number("{{ indonesia.4 }}") }
+        ]
+      },
+      {
+        type: "line",
+        showInLegend: true,
+        name: "Ekonomi",
+        markerType: "triangle",
+        dataPoints: [
+          { label: "Semester 1", y: Number("{{ ekonomi.0 }}") },
+          { label: "Semester 2", y: Number("{{ ekonomi.1 }}") },
+          { label: "Semester 3", y: Number("{{ ekonomi.2 }}") },
+          { label: "Semester 4", y: Number("{{ ekonomi.3 }}") },
+          { label: "Semester 5", y: Number("{{ ekonomi.4 }}") }
+        ]
+      },
+      {
+        type: "line",
+        showInLegend: true,
+        name: "Geografi",
+        markerType: "cross",
+        dataPoints: [
+          { label: "Semester 1", y: Number("{{ geografi.0 }}") },
+          { label: "Semester 2", y: Number("{{ geografi.1 }}") },
+          { label: "Semester 3", y: Number("{{ geografi.2 }}") },
+          { label: "Semester 4", y: Number("{{ geografi.3 }}") },
+          { label: "Semester 5", y: Number("{{ geografi.4 }}") }
+        ]
+      },
+      {
+        type: "line",
+        showInLegend: true,
+        name: "Sosiologi",
+        markerType: "no marker",
+        dataPoints: [
+          { label: "Semester 1", y: Number("{{ sosiologi.0 }}") },
+          { label: "Semester 2", y: Number("{{ sosiologi.1 }}") },
+          { label: "Semester 3", y: Number("{{ sosiologi.2 }}") },
+          { label: "Semester 4", y: Number("{{ sosiologi.3 }}") },
+          { label: "Semester 5", y: Number("{{ sosiologi.4 }}") }
+        ]
+      }]
+    });
+    chart.render();
+
+    function toogleDataSeries(e) {
+      if (typeof (e.dataSeries.visible) === "undefined" || e.dataSeries.visible) {
+        e.dataSeries.visible = false;
+      } else {
+        e.dataSeries.visible = true;
+      }
+      chart.render();
+    }
+
+  }
+</script>
+{% endif %}
+{% endblock js %}

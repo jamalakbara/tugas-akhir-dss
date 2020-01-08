@@ -1,0 +1,531 @@
+{% extends 'spk/base.html' %}
+{% load static %}
+{% block css %}
+<style>
+  /* Chrome, Safari, Edge, Opera */
+  input::-webkit-outer-spin-button,
+  input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  /* Firefox */
+  input[type=number] {
+    -moz-appearance: textfield;
+  }
+
+  .muncul {
+    display: block !important;
+  }
+</style>
+{% endblock css %}
+{% block content %}
+<div class="content">
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-md-8 muncul">
+        <div class="card">
+          <div class="card-header card-header-success">
+            <h4 class="card-title" id="title">Pilih Jurusan SMA</h4>
+          </div>
+          <!-- <div class="card-header card-header-primary" style="display: none;">
+                  <h4 class="card-title">Nilai Semester 1</h4>
+                  <p class="card-category">Masukkan Nilai Sesuai Jurusan</p>
+                </div> -->
+          <div class="card-body">
+            <form method="POST" action="{% url 'dss-nilai' %}">
+              {% csrf_token %}
+              <div id="jurusan" class="muncul" style="display: none;">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Jurusan Sekolah</label>
+                      <select class="form-control" id="jurusan-sekolah" name="jurusan-sekolah">
+                        <option value="IPA">IPA</option>
+                        <option value="IPS">IPS</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ipa" style="display: none;">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Bahasa Inggris</label>
+                      <input name="ing1" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Bahasa Indonesia</label>
+                      <input name="ind1" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Matematika</label>
+                      <input name="mtk1" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Fiskia</label>
+                      <input name="fsk1" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Kimia</label>
+                      <input name="kma1" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Biologi</label>
+                      <input name="blg1" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ipa" style="display: none;">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Bahasa Inggris</label>
+                      <input name="ing2" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Bahasa Indonesia</label>
+                      <input name="ind2" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Matematika</label>
+                      <input name="mtk2" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Fiskia</label>
+                      <input name="fsk2" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Kimia</label>
+                      <input name="kma2" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Biologi</label>
+                      <input name="blg2" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ipa" style="display: none;">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Bahasa Inggris</label>
+                      <input name="ing3" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Bahasa Indonesia</label>
+                      <input name="ind3" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Matematika</label>
+                      <input name="mtk3" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Fiskia</label>
+                      <input name="fsk3" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Kimia</label>
+                      <input name="kma3" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Biologi</label>
+                      <input name="blg3" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ipa" style="display: none;">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Bahasa Inggris</label>
+                      <input name="ing4" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Bahasa Indonesia</label>
+                      <input name="ind4" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Matematika</label>
+                      <input name="mtk4" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Fiskia</label>
+                      <input name="fsk4" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Kimia</label>
+                      <input name="kma4" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Biologi</label>
+                      <input name="blg4" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ipa" style="display: none;">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Bahasa Inggris</label>
+                      <input name="ing5" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Bahasa Indonesia</label>
+                      <input name="ind5" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Matematika</label>
+                      <input name="mtk5" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Fiskia</label>
+                      <input name="fsk5" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Kimia</label>
+                      <input name="kma5" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Biologi</label>
+                      <input name="blg5" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ips" style="display: none;">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Bahasa Inggris</label>
+                      <input name="ingg1" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Bahasa Indonesia</label>
+                      <input name="indo1" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Ekonomi</label>
+                      <input name="ekn1" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Geografi</label>
+                      <input name="ggr1" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Sosiologi</label>
+                      <input name="ssl1" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ips" style="display: none;">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Bahasa Inggris</label>
+                      <input name="ingg2" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Bahasa Indonesia</label>
+                      <input name="indo2" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Ekonomi</label>
+                      <input name="ekn2" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Geografi</label>
+                      <input name="ggr2" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Sosiologi</label>
+                      <input name="ssl2" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ips" style="display: none;">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Bahasa Inggris</label>
+                      <input name="ingg3" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Bahasa Indonesia</label>
+                      <input name="indo3" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Ekonomi</label>
+                      <input name="ekn3" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Geografi</label>
+                      <input name="ggr3" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Sosiologi</label>
+                      <input name="ssl3" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ips" style="display: none;">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Bahasa Inggris</label>
+                      <input name="ingg4" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Bahasa Indonesia</label>
+                      <input name="indo4" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Ekonomi</label>
+                      <input name="ekn4" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Geografi</label>
+                      <input name="ggr4" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Sosiologi</label>
+                      <input name="ssl4" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="ips" style="display: none;">
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Bahasa Inggris</label>
+                      <input name="ingg5" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Bahasa Indonesia</label>
+                      <input name="indo5" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Ekonomi</label>
+                      <input name="ekn5" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Geografi</label>
+                      <input name="ggr5" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="col-md-12">
+                    <div class="form-group">
+                      <label class="bmd-label-floating">Sosiologi</label>
+                      <input name="ssl5" type="number" min="0" max="100" class="form-control" value="0">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <a class="btn btn-rose pull-left text-light" id="btn-prv" style="display: none;">Kembali</a>
+                  <a class="btn btn-success pull-right text-light muncul" id="btn-nxt"
+                    style="display: none;">Selanjutnya</a>
+                  <button type="submit" class="btn btn-success pull-right text-light" id="btn-submit"
+                    style="display: none;">Input</button>
+                </div>
+                <div class="clearfix"></div>
+              </div>
+            </formmethod="POST">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock content %}
+{% block js %}
+<script src="{% static 'spk/js/input.js' %}"></script>
+{% endblock js %}
