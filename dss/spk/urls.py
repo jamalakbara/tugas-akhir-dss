@@ -6,7 +6,6 @@ urlpatterns = [
     path('input/', views.inputNilai, name="dss-input"),
     path('rekomendasi/', views.rekomendasiJurusan, name="dss-rekomendasi"),
     path('nilai/', views.nilaiSaya, name="dss-nilai"),
-    path('notifications/', views.notifikasi, name="dss-notif"),
     path('akurasiSatu/', views.akurasiSatu, name="dss-akurasiSatu"),
     path('akurasiDua/', views.akurasiDua, name="dss-akurasiDua"),
     path('akurasiTiga/', views.akurasiTiga, name="dss-akurasiTiga"),

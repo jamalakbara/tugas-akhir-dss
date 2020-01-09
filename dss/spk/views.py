@@ -69,13 +69,6 @@ def nilaiSaya(request):
             context['indonesia'] = [item for item in nilai['Indonesia']]
     return render(request, 'spk/nilaiSaya.html', context)
 
-def notifikasi(request):
-    context =  {
-        "title": "Notifikasi"
-    }
-
-    return render(request, 'spk/notifications.html', context)
-
 def dashboard(request):
     context =  {
         "title": "Dashboard"
