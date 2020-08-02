@@ -66,7 +66,7 @@ def getWeight(knowledge_matrix):
     weight = dict()
     for kriteria, val in a.items():
         weight_val = val / sigma_a
-        weight[kriteria] = float("%.2f" % weight_val)
+        weight[kriteria] = float("%.3f" % weight_val)
         
     return weight
 
